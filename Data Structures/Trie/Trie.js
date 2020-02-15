@@ -23,6 +23,18 @@ var TrieNode = (function () {
         });
         curr.isLeaf = true;
     };
+
+    // Tries to find word in a Trie
+    TrieNode.prototype.find = function (word) {
+        var curr = this;
+        word.split("").forEach(char => {
+            if (char in curr.nodes) {
+                curr = curr.nodes[char];
+            }
+            return false;
+        });
+        return curr.isLeaf;
+    };
     return TrieNode;
 }());
 
